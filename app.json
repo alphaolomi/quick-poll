@@ -1,0 +1,6 @@
+{
+  "name": "Vote Mono",
+  "description": "A simple Real time votes application baked with Node powerd by Pusher",
+  "repository": "https://github.com/alphaolomi/vote-mono",
+  "image": "heroku/nodejs"
+}
