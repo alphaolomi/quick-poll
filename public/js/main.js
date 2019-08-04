@@ -1,5 +1,5 @@
 const form = document.getElementById('vote-form');
-var event;
+let event;
 
 form.addEventListener('submit', e => {
 
@@ -68,16 +68,16 @@ fetch("http://localhost:3000/poll")
       // Enable pusher logging - don't include this in production
       Pusher.logToConsole = true;
 
-      var pusher = new Pusher('355bbcc1238451dd1d93', {
+      const pusher = new Pusher('355bbcc1238451dd1d93', {
         cluster: 'ap2',
         encrypted: true
       });
 
-      var channel = pusher.subscribe('os-poll');
+      const channel = pusher.subscribe('os-poll');
 
       channel.bind('os-vote', function (data) {
         dataPoints.forEach((point) => {
-          if (point.label == data.os) {
+          if (point.label === data.os) {
             point.y += data.points;
             totalVotes += data.points;
             event = new CustomEvent('votesAdded', {detail: {totalVotes: totalVotes}});
