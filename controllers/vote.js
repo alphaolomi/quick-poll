@@ -30,7 +30,7 @@ const pusher = new Pusher({
 // @desc Loads form
 async function index(req, res, next) {
   try {
-    Vote.find().then(votes => res.status(200).json({ success: true, votes: votes }));
+    Vote.find().then(votes => res.status(200).json({success: true, votes: votes}));
   } catch (error) {
     next(error);
   }
@@ -52,7 +52,7 @@ async function store(req, res, next) {
         os: vote.os
       });
 
-      return res.status(200).json({ success: true, message: 'Thank you for voting' });
+      return res.status(200).json({success: true, message: 'Thank you for voting'});
     });
   } catch (error) {
     next(error);
