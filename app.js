@@ -1,28 +1,48 @@
 const express = require('express');
 const path = require('path');
-const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const cors = require('cors');
+const session = require('express-session');
+const createError = require('http-errors');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 
-// DB Config
-require('./config/db');
+const apiRoutes = require('./routes/api');
+const webRoutes = require('./routes/web');
+
 
 const app = express();
+app.disable('x-powered-by');
 
-const poll = require('./routes/poll');
 
-// Set public folder
+app.use(methodOverride('_method'));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({ secret: 'secret', resave: true, saveUninitialized: true }));
 
-// Body parser middleware
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// Enable CORS
 app.use(cors());
 
-app.use('/poll', poll);
+app.use('/api/v1/', apiRoutes);
+app.use('/', webRoutes);
 
-const port = 3000;
 
-// Start server
-app.listen(port, () => console.log(`Server started on port ${port}`));
+app.use(function (req, res, next) {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+app.use(function (error, req, res, next) {
+  if (!error.status) error = {
+    status: 500,
+    message: 'Whoops! Something went wrong.'
+  };
+  res.status(error.status).render('error', { error: error });
+});
+
+module.exports = app;

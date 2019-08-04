@@ -1,17 +1,28 @@
 const Pusher = require('pusher');
+const mongoose = require('mongoose');
 const Vote = require('../models/vote');
+
+const DB_URI = process.env.PUSHER_APP_KEY || "";
+
+mongoose.Promise = global.Promise;
+mongoose
+  .connect(DB_URI)
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
+
 
 const PUSHER_APP_KEY = process.env.PUSHER_APP_KEY || "";
 const PUSHER_APP_ID = process.env.PUSHER_APP_ID || "";
 const PUSHER_APP_SECRET = process.env.PUSHER_APP_SECRET || "";
 const PUSHER_APP_CLUSTER = process.env.PUSHER_APP_CLUSTER || "";
+const PUSHER_APP_ENCRYPTED = process.env.PUSHER_APP_ENCRYPTED || true;
 
 const pusher = new Pusher({
   appId: PUSHER_APP_KEY,
   key: PUSHER_APP_ID,
   secret: PUSHER_APP_SECRET,
   cluster: PUSHER_APP_CLUSTER,
-  encrypted: ""
+  encrypted: PUSHER_APP_ENCRYPTED
 });
 
 
