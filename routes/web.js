@@ -10,8 +10,8 @@ const router = express.Router();
 // @route GET /
 router.get('/', homeController.welcome);
 
-// @route GET /
-// router.get('/home', homeController.show);
+// @route GET /home
+router.get('/home', homeController.show);
 
 // @route GET /welcome
 router.get('/welcome', homeController.index);

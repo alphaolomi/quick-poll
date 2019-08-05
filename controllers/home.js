@@ -16,6 +16,16 @@ async function index(request, response, next) {
 }
 
 
+async function home(request, response, next) {
+  try {
+    return response.status(200).type('html').render('index', {title: 'Express'});
+  } catch (error) {
+    next(error);
+  }
+}
+
+
+
 async function show(request, response) {
   try {
     const user = {
@@ -33,3 +43,5 @@ async function show(request, response) {
 module.exports.show = show;
 module.exports.welcome = welcome;
 module.exports.index = index;
+
+module.exports.home = home;
