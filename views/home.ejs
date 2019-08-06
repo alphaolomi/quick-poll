@@ -2,55 +2,43 @@
 <html lang="en">
 
 <head>
-    <% include partials/header.ejs %>
-    <title>Vote Mono| Home</title>
-    <style>
-        .hidden {
-            display: none;
-        }
-    </style>
+  <% include partials/header.ejs %>
+  <title>Vote Mono| Home</title>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
-    <h1>OS Vote</h1>
-    <p>Vote for your favorite OS to develop on</p>
-    <div id="hasVotedAlreadyErrorMsg" class="card-panel hidden" style="width: 30%">
-        <span class="red-text text-darken-2">You have already voted, you can only vote once.</span>
-    </div>
-    <form id="vote-form">
-        <p>
-            <input type="radio" name="os" id="windows" value="Windows">
-            <label for="windows">Windows</label>
-        </p>
-        <p>
-            <input type="radio" name="os" id="macos" value="MacOS">
-            <label for="macos">MacOS</label>
-        </p>
-        <p>
-            <input type="radio" name="os" id="linux" value="Linux">
-            <label for="linux">Linux Distro</label>
-        </p>
-        <p>
-            <input type="radio" name="os" id="other" value="Other">
-            <label for="other">Something Else</label>
-        </p>
-        <input type="submit" value="Vote" class="btn">
+  <div class="container">
+    <form>
+      <div class="form-group row">
+        <label for="inputName" class="col-sm-1-12 col-form-label"></label>
+        <div class="col-sm-1-12">
+          <input type="text" class="form-control" name="inputName" id="inputName" placeholder="">
+        </div>
+      </div>
+      <fieldset class="form-group row">
+        <legend class="col-form-legend col-sm-1-12">Group name</legend>
+        <div class="col-sm-1-12">
+
+        </div>
+      </fieldset>
+      <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+          <button type="submit" class="btn btn-primary">Action</button>
+        </div>
+      </div>
     </form>
+  </div>
 
-    <br>
-    <br>
-
-    <h5 style="text-align: center" id="chartTitle"></h5>
-    <div id="chartContainer" style="height: 300px;width:100%"></div>
-</div>
-
-<script src="js/app.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
-<script src="js/main.js"></script>
-
-
+  <script src="js/app.js"></script>
+  <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
+  <script src="js/main.js"></script>
 </body>
 
 </html>

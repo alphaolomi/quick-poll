@@ -47,8 +47,6 @@ fetch("http://localhost:3000/votes")
     const chartContainer = document.querySelector('#chartContainer');
 
     if (chartContainer) {
-
-      // Listen for the event.
       document.addEventListener('votesAdded', function (e) {
         document.querySelector('#chartTitle').textContent = `Total Votes: ${e.detail.totalVotes}`;
       });
@@ -65,27 +63,29 @@ fetch("http://localhost:3000/votes")
       });
       chart.render();
 
-      // Enable pusher logging - don't include this in production
+      // todo Enable pusher logging - don't include this in production
       Pusher.logToConsole = true;
 
-      const pusher = new Pusher('355bbcc1238451dd1d93', {
+      const pusher = new Pusher('72f8830966153d8393d2', {
         cluster: 'ap2',
-        encrypted: true
+        forceTLS: true
       });
 
       const channel = pusher.subscribe('os-poll');
 
       channel.bind('os-vote', function (data) {
-        dataPoints.forEach((point) => {
-          if (point.label === data.os) {
-            point.y += data.points;
-            totalVotes += data.points;
-            event = new CustomEvent('votesAdded', {detail: {totalVotes: totalVotes}});
-            // Dispatch the event.
-            document.dispatchEvent(event);
-          }
-        });
-        chart.render();
+        // dataPoints.forEach((point) => {
+        //   if (point.label === data.os) {
+        //     point.y += data.points;
+        //     totalVotes += data.points;
+        //     event = new CustomEvent('votesAdded', {detail: {totalVotes: totalVotes}});
+        //     // Dispatch the event.
+        //     document.dispatchEvent(event);
+        //   }
+        // });
+        // chart.render();
+
+        alert(JSON.stringify(data));
       });
     }
 
