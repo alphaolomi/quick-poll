@@ -35,7 +35,7 @@ const channels_client = new Pusher({
   key: '72f8830966153d8393d2',
   secret: '7810d9a0f9f5ea7ae10c',
   cluster: 'ap2',
-  encrypted: true
+  useTLS: true
 });
 
 
