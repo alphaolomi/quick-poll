@@ -13,26 +13,72 @@
 
 <body>
 
-  <div class="container">
-    <form>
-      <div class="form-group row">
-        <label for="inputName" class="col-sm-1-12 col-form-label"></label>
-        <div class="col-sm-1-12">
-          <input type="text" class="form-control" name="inputName" id="inputName" placeholder="">
-        </div>
-      </div>
-      <fieldset class="form-group row">
-        <legend class="col-form-legend col-sm-1-12">Group name</legend>
-        <div class="col-sm-1-12">
+  <div class="container mt-3">
+    <h1 class="display-4">OS Vote</h1>
+    <p class="lead">Vote for your favorite OS to develop on</p>
 
-        </div>
-      </fieldset>
-      <div class="form-group row">
-        <div class="offset-sm-2 col-sm-10">
-          <button type="submit" class="btn btn-primary">Action</button>
+    <div id="hasVotedAlreadyErrorMsg" class="card-panel hidden" style="width: 30%">
+      <span class="red-text text-darken-2">You have already voted, you can only vote once.</span>
+    </div>
+
+    <form id="vote-form">
+
+
+      <ul class="list-group">
+        <li class="list-group-item">
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="os" id="windows" value="Windows">
+                  Windows
+                </label>
+              </div>
+        </li>
+        <li class="list-group-item">
+
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="os" id="macos" value="MacOS">
+                  MacOS
+                </label>
+              </div>
+
+        </li>
+        <li class="list-group-item">
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="os" id="linux" value="Linux">
+                  Linux
+                </label>
+              </div>
+
+        </li>
+
+
+        <li class="list-group-item">
+
+
+            <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="os" id="other" value="Other">
+                  Other
+                </label>
+              </div>
+
+
+          </li>
+      </ul>
+
+      <div class="form-group row mt-3">
+        <div class="offset-sm-2 col-sm-4">
+          <button type="submit" class="btn btn-dark btn-lg">Vote</button>
         </div>
       </div>
     </form>
+  </div>
+
+  <div class="container">
+      <h5 style="text-align: center" id="chartTitle"></h5>
+      <div id="chartContainer" style="height: 300px;width:100%"></div>
   </div>
 
   <script src="js/app.js"></script>

@@ -1,24 +1,10 @@
 const form = document.getElementById('vote-form');
 let event;
 
-form.addEventListener('submit', e => {
 
-  const choice = document.querySelector('input[name=os]:checked').value;
-  const data = {os: choice};
+function getVotes() {
 
-  fetch('http://localhost:3000/votes', {
-    method: 'post',
-    body: JSON.stringify(data),
-    headers: new Headers({
-      'Content-Type': 'application/json'
-    })
-  }).then(res => res.json())
-    .catch(err => console.log(err));
-
-  e.preventDefault();
-});
-
-fetch("http://localhost:3000/votes")
+  fetch("http://localhost:3000/votes")
   .then(res => res.json())
   .then(data => {
     let votes = data.votes;
@@ -33,15 +19,15 @@ fetch("http://localhost:3000/votes")
     };
 
     voteCounts = votes.reduce((acc, vote) => (
-        (acc[vote.os] = (acc[vote.os] || 0) + parseInt(vote.points)), acc),
+      (acc[vote.os] = (acc[vote.os] || 0) + parseInt(vote.points)), acc),
       {}
     );
 
     let dataPoints = [
-      {label: 'Windows', y: voteCounts.Windows},
-      {label: 'MacOS', y: voteCounts.MacOS},
-      {label: 'Linux', y: voteCounts.Linux},
-      {label: 'Other', y: voteCounts.Other}
+      { label: 'Windows', y: voteCounts.Windows },
+      { label: 'MacOS', y: voteCounts.MacOS },
+      { label: 'Linux', y: voteCounts.Linux },
+      { label: 'Other', y: voteCounts.Other }
     ];
 
     const chartContainer = document.querySelector('#chartContainer');
@@ -74,19 +60,49 @@ fetch("http://localhost:3000/votes")
       const channel = pusher.subscribe('os-poll');
 
       channel.bind('os-vote', function (data) {
-        // dataPoints.forEach((point) => {
-        //   if (point.label === data.os) {
-        //     point.y += data.points;
-        //     totalVotes += data.points;
-        //     event = new CustomEvent('votesAdded', {detail: {totalVotes: totalVotes}});
-        //     // Dispatch the event.
-        //     document.dispatchEvent(event);
-        //   }
-        // });
-        // chart.render();
-
-        alert(JSON.stringify(data));
+        dataPoints.forEach((point) => {
+          if (point.label === data.os) {
+            point.y += data.points;
+            totalVotes += data.points;
+            event = new CustomEvent('votesAdded', {detail: {totalVotes: totalVotes}});
+            // Dispatch the event.
+            document.dispatchEvent(event);
+          }
+        });
+        chart.render();
+        // alert(JSON.stringify(data));
       });
     }
 
   });
+
+
+}
+
+form.addEventListener('submit', e => {
+
+  const choice = document.querySelector('input[name=os]:checked').value;
+  const data = { os: choice };
+
+  fetch('http://localhost:3000/votes', {
+    method: 'post',
+    body: JSON.stringify(data),
+    headers: new Headers({
+      'Content-Type': 'application/json'
+    })
+  })
+  .then(res => res.json()).
+  then(data => {
+    // todo display thank for voting
+    console.log(data)
+    // getVotes()
+  })
+    .catch(err => console.log(err));
+
+  e.preventDefault();
+});
+
+
+
+
+getVotes()

@@ -4,6 +4,7 @@ const registerController = require("../controllers/register");
 const loginController = require("../controllers/login");
 const homeController = require("../controllers/home");
 const voteController = require("../controllers/vote");
+const testController = require("../controllers/test");
 
 const router = express.Router();
 
@@ -36,5 +37,11 @@ router.get('/votes', voteController.index);
 // @route POST /votes
 // @desc Store vote
 router.post('/votes', voteController.store);
+
+
+
+// @route GET /votes
+// @desc Loads votes
+router.get('/test', testController.index);
 
 module.exports = router;
