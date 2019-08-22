@@ -48,29 +48,6 @@ function getVotes() {
           ]
         });
         chart.render();
-
-        // todo Enable pusher logging - don't include this in production
-        // Pusher.logToConsole = true;
-
-        const pusher = new Pusher('72f8830966153d8393d2', {
-          cluster: 'ap2',
-          forceTLS: true
-        });
-
-        const channel = pusher.subscribe('os-poll');
-
-        channel.bind('os-vote', function (data) {
-          dataPoints.forEach((point) => {
-            if (point.label === data.os) {
-              point.y += data.points;
-              totalVotes += data.points;
-              event = new CustomEvent('votesAdded', { detail: { totalVotes: totalVotes } });
-              document.dispatchEvent(event);
-            }
-          });
-          chart.render();
-
-        });
       }
 
     });
@@ -88,8 +65,8 @@ form.addEventListener('submit', e => {
       'Content-Type': 'application/json'
     })
   })
-    .then(res => res.json()).
-    then(data => console.log(data))
+    .then(res => res.json())
+    // then(data => console.log(data))
     .catch(err => console.log(err));
   e.preventDefault();
 });
@@ -98,3 +75,25 @@ form.addEventListener('submit', e => {
 
 
 getVotes()
+
+
+
+const pusher = new Pusher('72f8830966153d8393d2', {
+  cluster: 'ap2',
+  forceTLS: true
+});
+
+const channel = pusher.subscribe('os-poll');
+
+channel.bind('os-vote', function (data) {
+  dataPoints.forEach((point) => {
+    if (point.label === data.os) {
+      point.y += data.points;
+      totalVotes += data.points;
+      event = new CustomEvent('votesAdded', { detail: { totalVotes: totalVotes } });
+      document.dispatchEvent(event);
+    }
+  });
+  chart.render();
+
+});
