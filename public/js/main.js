@@ -2,59 +2,6 @@ const form = document.getElementById('vote-form');
 let event;
 
 
-function getVotes() {
-
-  fetch("https://vote-mono.herokuapp.com/votes")
-    .then(res => res.json())
-    .then(data => {
-      let votes = data.votes;
-      let totalVotes = votes.length;
-      document.querySelector('#chartTitle').textContent = `Total Votes: ${totalVotes}`;
-
-      let voteCounts = {
-        Windows: 0,
-        MacOS: 0,
-        Linux: 0,
-        Other: 0
-      };
-
-      voteCounts = votes.reduce((acc, vote) => (
-        (acc[vote.os] = (acc[vote.os] || 0) + parseInt(vote.points)), acc),
-        {}
-      );
-
-      let dataPoints = [
-        { label: 'Windows', y: voteCounts.Windows },
-        { label: 'MacOS', y: voteCounts.MacOS },
-        { label: 'Linux', y: voteCounts.Linux },
-        { label: 'Other', y: voteCounts.Other }
-      ];
-
-      const chartContainer = document.querySelector('#chartContainer');
-
-      if (chartContainer) {
-        document.addEventListener('votesAdded', function (e) {
-          document.querySelector('#chartTitle').textContent = `Total Votes: ${e.detail.totalVotes}`;
-        });
-
-        const chart = new CanvasJS.Chart('chartContainer', {
-          animationEnabled: true,
-          theme: 'theme1',
-          data: [
-            {
-              type: 'column',
-              dataPoints: dataPoints
-            }
-          ]
-        });
-        chart.render();
-      }
-
-    });
-
-
-}
-
 form.addEventListener('submit', e => {
   const choice = document.querySelector('input[name=os]:checked').value;
   const data = { os: choice };
@@ -72,9 +19,54 @@ form.addEventListener('submit', e => {
 });
 
 
+fetch("https://vote-mono.herokuapp.com/votes")
+.then(res => res.json())
+.then(data => {
+  let votes = data.votes;
+  let totalVotes = votes.length;
+  document.querySelector('#chartTitle').textContent = `Total Votes: ${totalVotes}`;
 
+  let voteCounts = {
+    Windows: 0,
+    MacOS: 0,
+    Linux: 0,
+    Other: 0
+  };
 
-getVotes()
+  voteCounts = votes.reduce((acc, vote) => (
+    (acc[vote.os] = (acc[vote.os] || 0) + parseInt(vote.points)), acc),
+    {}
+  );
+
+  let dataPoints = [
+    { label: 'Windows', y: voteCounts.Windows },
+    { label: 'MacOS', y: voteCounts.MacOS },
+    { label: 'Linux', y: voteCounts.Linux },
+    { label: 'Other', y: voteCounts.Other }
+  ];
+
+  const chartContainer = document.querySelector('#chartContainer');
+
+  if (chartContainer) {
+    document.addEventListener('votesAdded', function (e) {
+      document.querySelector('#chartTitle').textContent = `Total Votes: ${e.detail.totalVotes}`;
+    });
+
+    const chart = new CanvasJS.Chart('chartContainer', {
+      animationEnabled: true,
+      theme: 'theme1',
+      data: [
+        {
+          type: 'column',
+          dataPoints: dataPoints
+        }
+      ]
+    });
+    chart.render();
+  }
+
+});
+
 
 
 
