@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const Vote = require('../models/vote');
+const Vote = require('../models/Vote');
 
 const DB_URI = process.env.DB_DATABASE || "mongodb://localhost:27017/votemono";
 

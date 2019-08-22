@@ -42,6 +42,6 @@ router.post('/votes', voteController.store);
 
 // @route GET /votes
 // @desc Loads votes
-router.get('/test', testController.index);
+// router.get('/test', testController.index);
 
 module.exports = router;
