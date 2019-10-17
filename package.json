@@ -1,7 +1,7 @@
 {
-  "name": "pusherpoll",
+  "name": "vote-mono",
   "version": "1.0.1",
-  "main": "app.js",
+  "main": "./bin/www",
   "engines": {
     "node": "10.x"
   },
@@ -9,10 +9,10 @@
     "start": "node ./bin/www",
     "dev": "nodemon /bin/www",
     "debug": "set DEBUG=* & nodemon ./bin/www",
-    "test": "node test.js"
+    "test": "jest"
   },
   "author": "Alpha Olomi <hello@alphaolomi.com>",
-  "license": "Apache License",
+  "license": "Apache 2 License",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.4",
@@ -28,6 +28,14 @@
     "pusher": "^3.0.0"
   },
   "devDependencies": {
-    "nodemon": "1.19.4"
+    "jest": "^24.9.0",
+    "nodemon": "1.19.4",
+    "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }
