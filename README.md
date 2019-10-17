@@ -1,39 +1,90 @@
-<h1 align="center">Vote Mono</h1>
-<p align="center">A simple vote appliction, responsive and bare minimal application based on React.Real-Time polling application using Pusher, Node.js, Express, MongoDB and CanvasJS. Made with ❤️ in Tanzania.</p>
+# Vote
 
+[![Software License][ico-license]](LICENSE.md)
+[![Build Status][ico-travis]][link-travis]
 
-<p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/Maintained%3F-yes-green.svg"></a>
-</p>
+A secure, voting platform built with Expressjs,
 
-## Progress
+#### ✨Features (Technologies Used)
 
-Votemono is in development right now, Wanna check out the components? sure!! .
+- Express js
+- MongoDB
+- Login, register, email verification and password reset
+- Bootstrap 4 + Font Awesome 5
 
-## Getting Start
+## 🧩Modules
 
-Edit the config/keys.js file and add your MongoDB URI and Pusher key info
+- [ ] Auth module
+- [ ] Voteing module
+
+## 🚀Getting started
+
+Yarn is prefered
+
+#### Installation
+
+Via Git
+
+- Clone repo
 
 ```bash
-# Install dependencies
-npm install
+git clone https://github.com/alphaolomi/vote-mono.git
 
-# Run dev server localhost:3000
-npm run dev
+cd wazo
 
-# Start
-npm start
+yarn install
 ```
 
+- Edit `.env` and set your database connection details
 
-## Status
+```bash
+cp .env.example .env
+```
 
-In development v.0.0.1
+- Development
 
+```bash
+yarn start
 
-## Author
+# debug mode
+npm run debug
+```
 
-Alpha Olomi [hello@alphaolomi.com](mailto:hello@alphaolomi.com)
+#### Production
+
+```bash
+yarn start
+```
+
+## Changelog
+
+Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+
+## Testing
+
+```bash
+$ yarn test
+```
+
+## Contributing
+
+Pull requests are welcome. Please see [CONTRIBUTING](./.github/CONTRIBUTING.md) and [CODE_OF_CONDUCT](./.github/CODE_OF_CONDUCT.md) for details.
+
+## Security
+
+If you discover any security related issues, please email [hello@alphaolomi.com](mailto:hello@alphaolomi.com) instead of using the issue tracker.
+
+## Credits
+
+- **Alpha Olomi** [hello@alphaolomi.com](hello@alphaolomi.com)
+- [All Contributors][link-contributors]
 
 ## License
-MIT License
+
+The Apache 2 License. Please see [License File](LICENSE) for more information.
+
+[ico-license]: https://img.shields.io/badge/license-Apache2-brightgreen.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/alphaolomi/wazo/master.svg?style=flat-square
+[link-travis]: https://travis-ci.org/alphaolomi/vote-mono
+[link-author]: https://github.com/alphaolomi
+[link-contributors]: ../../contributors
