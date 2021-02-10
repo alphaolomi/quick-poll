@@ -1,27 +1,27 @@
-# Vote
+# Vote [![Software License][ico-license]](LICENSE.md) [![Build Status][ico-travis]][link-travis]
 
-[![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
+A simple Voting app built with Express.js,
 
-A secure, voting platform built with Expressjs,
+## ✨Features (Technologies Used)
 
-#### ✨Features (Technologies Used)
-
-- Express js
-- MongoDB
-- Login, register, email verification and password reset
-- Bootstrap 4 + Font Awesome 5
+- [Express js](/)
+- [React js](/)
+- [MongoDB](/)
+- [Socket.IO](/)
+- [Bootstrap 5](/) + [Feather Icons](/)
 
 ## 🧩Modules
 
+- [ ] Landing Page
 - [ ] Auth module
-- [ ] Voteing module
+- [ ] Voting module
+- [ ] Misc module
 
 ## 🚀Getting started
 
 Yarn is prefered
 
-#### Installation
+### Installation
 
 Via Git
 
@@ -63,7 +63,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 ## Testing
 
 ```bash
-$ yarn test
+yarn test
 ```
 
 ## Contributing
