@@ -22,7 +22,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^5.6.6",
     "morgan": "^1.9.1",
-    "pusher": "^4.0.0"
+    "pusher": "^5.0.0"
   },
   "devDependencies": {
     "jest": "26.6.3",
