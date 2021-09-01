@@ -20,14 +20,14 @@
     "express-session": "^1.16.2",
     "http-errors": "^1.7.3",
     "method-override": "^3.0.0",
-    "mongoose": "^5.6.6",
+    "mongoose": "^6.0.0",
     "morgan": "^1.9.1",
     "pusher": "^5.0.0"
   },
   "devDependencies": {
-    "jest": "27.0.6",
+    "jest": "27.1.0",
     "nodemon": "2.0.12",
-    "supertest": "6.1.4"
+    "supertest": "6.1.6"
   },
   "jest": {
     "testEnvironment": "node",
