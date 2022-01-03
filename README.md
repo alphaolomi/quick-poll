@@ -19,7 +19,7 @@ A simple Voting app built with Express.js,
 
 ## 🚀Getting started
 
-Yarn is prefered
+Yarn is preferred
 
 ### Installation
 
