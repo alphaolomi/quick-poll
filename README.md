@@ -1,90 +1,27 @@
-# Vote [![Software License][ico-license]](LICENSE.md) [![Build Status][ico-travis]][link-travis]
+# Next.js + Tailwind CSS Example
 
-A simple Voting app built with Express.js,
+This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
 
-## ✨Features (Technologies Used)
+## Preview
 
-- [Express js](/)
-- [React js](/)
-- [MongoDB](/)
-- [Socket.IO](/)
-- [Bootstrap 5](/) + [Feather Icons](/)
+Preview the example live on [StackBlitz](http://stackblitz.com/):
 
-## 🧩Modules
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
 
-- [ ] Landing Page
-- [ ] Auth module
-- [ ] Voting module
-- [ ] Misc module
+## Deploy your own
 
-## 🚀Getting started
+Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
 
-Yarn is preferred
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
 
-### Installation
+## How to use
 
-Via Git
-
-- Clone repo
+Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
 
 ```bash
-git clone https://github.com/alphaolomi/vote-mono.git
-
-cd wazo
-
-yarn install
+npx create-next-app --example with-tailwindcss with-tailwindcss-app
+# or
+yarn create next-app --example with-tailwindcss with-tailwindcss-app
 ```
 
-- Edit `.env` and set your database connection details
-
-```bash
-cp .env.example .env
-```
-
-- Development
-
-```bash
-yarn start
-
-# debug mode
-npm run debug
-```
-
-#### Production
-
-```bash
-yarn start
-```
-
-## Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-## Testing
-
-```bash
-yarn test
-```
-
-## Contributing
-
-Pull requests are welcome. Please see [CONTRIBUTING](./.github/CONTRIBUTING.md) and [CODE_OF_CONDUCT](./.github/CODE_OF_CONDUCT.md) for details.
-
-## Security
-
-If you discover any security related issues, please email [hello@alphaolomi.com](mailto:hello@alphaolomi.com) instead of using the issue tracker.
-
-## Credits
-
-- **Alpha Olomi** [hello@alphaolomi.com](hello@alphaolomi.com)
-- [All Contributors][link-contributors]
-
-## License
-
-The Apache 2 License. Please see [License File](LICENSE) for more information.
-
-[ico-license]: https://img.shields.io/badge/license-Apache2-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/alphaolomi/wazo/master.svg?style=flat-square
-[link-travis]: https://travis-ci.org/alphaolomi/vote-mono
-[link-author]: https://github.com/alphaolomi
-[link-contributors]: ../../contributors
+Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
